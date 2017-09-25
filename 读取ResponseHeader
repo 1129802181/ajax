@@ -1,0 +1,10 @@
+function getHeaderTime () {
+  console.log(this.getResponseHeader("Last-Modified"));  /* A valid GMTString date or null */
+}
+
+var oReq = new XMLHttpRequest();
+oReq.open("HEAD" /* use HEAD if you only need the headers! */, "yourpage.html");
+oReq.onload = getHeaderTime;
+oReq.send();
+
+也可以用来读取服务器返回的date，提取服务器的时间，注意时间格式都需要用Date.parse()转化；
